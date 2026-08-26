@@ -19,5 +19,8 @@ jobs:
       - name: Start application
         run: docker compose up -d
 
+      - name: Wait for application
+        run: sleep 10
+
       - name: Test API
         run: curl http://localhost:5000/health

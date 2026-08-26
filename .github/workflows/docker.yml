@@ -32,3 +32,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+                - name: Push backend image
+        run: |
+          docker tag retail-app-backend:latest ${{ secrets.DOCKERHUB_USERNAME }}/retail-backend:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/retail-backend:latest
+
+      - name: Push frontend image
+        run: |
+          docker tag retail-app-frontend:latest ${{ secrets.DOCKERHUB_USERNAME }}/retail-frontend:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/retail-frontend:latest

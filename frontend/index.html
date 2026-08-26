@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retail Inventory</title>
+</head>
+<body>
+
+    <h1>Retail Inventory</h1>
+
+    <button onclick="checkBackend()">
+        Check Backend
+    </button>
+
+    <p id="result"></p>
+
+<script>
+
+async function checkBackend() {
+
+    const response = await fetch("/api/health");
+
+    const data = await response.json();
+
+    document.getElementById("result").innerText =
+        JSON.stringify(data);
+}
+
+</script>
+
+</body>
+</html>

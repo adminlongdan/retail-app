@@ -6,15 +6,18 @@ on:
       - main
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Build Docker images
         run: docker compose build
+
+      - name: Start application
+        run: docker compose up -d
+
+      - name: Test API
+        run: curl http://localhost:5000/health

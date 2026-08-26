@@ -7,11 +7,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -33,7 +31,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-                - name: Push backend image
+      - name: Push backend image
         run: |
           docker tag retail-app-backend:latest ${{ secrets.DOCKERHUB_USERNAME }}/retail-backend:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/retail-backend:latest
